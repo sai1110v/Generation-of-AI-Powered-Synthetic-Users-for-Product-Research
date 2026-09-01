@@ -85,7 +85,7 @@ flowchart LR
     SA --> LLM
     IA --> LLM
 
-    RAG --> DB[("Supabase PostgreSQL<br/>+ pgvector")]
+    RAG --> DB[(Supabase PostgreSQL + pgvector)]
     EXP --> DB
     GRAPH --> DB
     REPORT --> DB
