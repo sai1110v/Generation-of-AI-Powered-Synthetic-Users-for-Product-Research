@@ -69,8 +69,8 @@ generator:
 
 ```mermaid
 flowchart LR
-    U["Product researcher"] --> UI["React + Vite UI<br/>Cloudflare Pages"]
-    UI -->|"HTTPS / JSON"| API["FastAPI service<br/>FastAPI Cloud"]
+    U["Product researcher"] --> UI["React + Vite UI (Cloudflare Pages)"]
+    UI -- "HTTPS / JSON" --> API["FastAPI service (FastAPI Cloud)"]
 
     API --> EXP["Experiment services"]
     API --> GRAPH["LangGraph supervisor"]
@@ -81,7 +81,7 @@ flowchart LR
     GRAPH --> SA["Survey agent"]
     GRAPH --> IA["Insight agent"]
 
-    PA --> LLM["Groq API<br/>openai/gpt-oss-20b"]
+    PA --> LLM["Groq API (openai/gpt-oss-20b)"]
     SA --> LLM
     IA --> LLM
 
@@ -113,13 +113,13 @@ shared state before the supervisor selects a specialist.
 flowchart TD
     Q["Research task"] --> K["Retrieve experiment evidence"]
     K --> S{"LangGraph supervisor"}
-    S -->|"persona"| P["Persona agent"]
-    S -->|"survey"| V["Survey agent"]
-    S -->|"insight"| I["Insight agent"]
+    S -- "persona" --> P["Persona agent"]
+    S -- "survey" --> V["Survey agent"]
+    S -- "insight" --> I["Insight agent"]
     P --> O["Grounded result"]
     V --> O
     I --> O
-    O --> C["Persist result, sources,<br/>status, and checkpoints"]
+    O --> C["Persist result, sources, status, and checkpoints"]
 ```
 
 - **Persona agent** generates or refines research participants using the brief
